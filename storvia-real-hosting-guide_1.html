@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storvia: real hosting aakkaan guide</title>
+<style>
+:root{--bg:#f2f5f7;--panel:#ffffff;--ink:#14202b;--mute:#566574;--line:#d5dde3;--accent:#0b7285;--accent-bg:#e3f3f6;--warn:#b4570a;--warn-bg:#fdf0e1;--code:#0f1c26;--code-ink:#d6e4ee}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e161d;--panel:#16212b;--ink:#e6edf2;--mute:#9bacb9;--line:#27384a;--accent:#5cc4d6;--accent-bg:#12303a;--warn:#f0a35e;--warn-bg:#3a2a17;--code:#0a1117;--code-ink:#cfe0ec}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.2;margin:0 0 12px;letter-spacing:-.01em}
+h2{font-size:1.35rem;margin:0 0 6px}
+p{margin:0 0 12px;max-width:70ch}
+.lead{color:var(--mute);font-size:1.05rem}
+.status{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}
+@media(max-width:600px){.status{grid-template-columns:1fr}}
+.box{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--panel)}
+.box b{display:block;margin-bottom:4px}
+.box.now{border-left:4px solid var(--warn)}
+.box.goal{border-left:4px solid var(--accent)}
+.progress{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);margin-bottom:24px;font-size:.9rem;color:var(--mute)}
+.bar{height:6px;background:var(--line);border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+section.step{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:18px}
+.head{display:flex;gap:12px;align-items:flex-start}
+.head input{width:22px;height:22px;margin-top:5px;accent-color:var(--accent);flex:none}
+.tag{display:inline-block;font-size:.8rem;padding:2px 8px;border-radius:4px;background:var(--accent-bg);color:var(--accent);margin-left:8px;vertical-align:middle;font-weight:600}
+.tag.later{background:var(--warn-bg);color:var(--warn)}
+ul{padding-left:20px;margin:8px 0 12px}
+li{margin-bottom:4px}
+pre{background:var(--code);color:var(--code-ink);padding:14px 16px;border-radius:6px;overflow-x:auto;font:13px/1.55 ui-monospace,Menlo,Consolas,monospace;margin:10px 0 14px}
+code{font:.9em ui-monospace,Menlo,Consolas,monospace;background:var(--accent-bg);padding:1px 5px;border-radius:3px}
+pre code{background:none;padding:0}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn);padding:10px 14px;border-radius:4px;margin:10px 0}
+.done h2{text-decoration:line-through;color:var(--mute)}
+footer{color:var(--mute);font-size:.9rem;margin-top:30px}
+a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Storvia real hosting aakkaan: step by step guide</h1>
+  <p class="lead">Ninte platform ippo hosting simulate cheyyuka maathram aanu. Ee guide follow cheythaal client websites real aayi serve cheyyunna platform aakkaam.</p>
+
+  <div class="status">
+    <div class="box now"><b>Ippo ulla avastha</b>Deploy cheyyumbol database record + fake build logs maathram undaakunnu. Domain "verified" ennathu fake aanu. Site open cheythaal onnum varilla.</div>
+    <div class="box goal"><b>Lakshyam</b><code>client.yourdomain.com</code> open cheythaal upload cheytha site load aakanam. Custom domain-um SSL-um real aayi work cheyyanam.</div>
+  </div>
+
+  <div class="progress" aria-live="polite"><span id="ptext">0 / 5 steps complete</span><div class="bar"><i id="pbar"></i></div></div>
+
+  <section class="step" data-id="s1">
+    <div class="head"><input type="checkbox" aria-label="Step 1 complete">
+      <div><h2>1. Zip upload cheythu hostname anusarichu serve cheyyuka <span class="tag">Aadyam ithu cheyyuka</span></h2>
+      <p>HTML/CSS/JS static sites (ninte client sites polullava) host cheyyaan ithu mathi.</p></div></div>
+    <ul>
+      <li>Dashboard-il "Upload site" button. Zip server-il <code>sites/&lt;slug&gt;/</code> folder-il extract cheyyanam.</li>
+      <li>Packages: <code>npm i multer adm-zip</code></li>
+      <li><code>db.ts</code>-il <code>getProjectByHost(host)</code> add cheyyanam. Subdomain-um customDomain-um check cheyyanam.</li>
+    </ul>
+    <p>Serving middleware (<code>server.ts</code>-il, <code>/api</code>-nu munpe):</p>
+<pre><code>import fs from 'fs';
+import path from 'path';
+
+const SITES_DIR = path.resolve('sites');
+
+app.use((req, res, next) =&gt; {
+  const host = req.hostname.toLowerCase();
+  const project = db.getProjectByHost(host);
+  if (!project) return next();            // Storvia dashboard thanne
+
+  const root = path.join(SITES_DIR, project.slug);
+  if (!fs.existsSync(root)) return res.status(404).send('Site not uploaded yet');
+  express.static(root)(req, res, () =&gt;
+    res.sendFile(path.join(root, 'index.html'))
+  );
+});</code></pre>
+    <div class="warn"><b>Zip-slip sradhikkuka:</b> zip extract cheyyumbol ellaa file path-um <code>sites/&lt;slug&gt;/</code>-nu ullil aano ennu check cheyyanam (<code>../</code> ulla path reject cheyyanam). Illenkil upload cheyyunnavar server-ile files overwrite cheyyum.</div>
+  </section>
+
+  <section class="step" data-id="s2">
+    <div class="head"><input type="checkbox" aria-label="Step 2 complete">
+      <div><h2>2. Real DNS check, custom domain</h2>
+      <p>Ippo <code>/projects/:id/custom-domain</code> ethu domain koduthaalum "verified" aakum. Athu maattanam.</p></div></div>
+<pre><code>import dns from 'dns/promises';
+
+async function isPointingToUs(domain: string, serverIp: string) {
+  const a = await dns.resolve4(domain).catch(() =&gt; []);
+  const cname = await dns.resolveCname(domain).catch(() =&gt; []);
+  return a.includes(serverIp) || cname.some(c =&gt; c.endsWith('yourdomain.com'));
+}</code></pre>
+    <ul>
+      <li>Verify aayillenkil <code>customDomainVerified: false</code> aayi vekkuka. User-nu "A record ittathinu shesham Verify press cheyyuka" ennu kaanikkuka.</li>
+      <li>Platform domain-nu wildcard DNS: <code>*.yourdomain.com</code> server IP-lekku point cheyyanam.</li>
+    </ul>
+  </section>
+
+  <section class="step" data-id="s3">
+    <div class="head"><input type="checkbox" aria-label="Step 3 complete">
+      <div><h2>3. Real server-il run cheyyuka, SSL</h2></div></div>
+    <ul>
+      <li>VPS edukkuka (Hetzner, DigitalOcean, AWS Lightsail). Laptop-il ninnu public hosting pattilla.</li>
+      <li>Front-il <b>Caddy</b> vekkuka. Custom domain-nu Let's Encrypt SSL automatic aayi edukkum (on-demand TLS).</li>
+      <li>Node app <code>pm2</code> allenkil Docker vazhi run cheyyuka. <code>NODE_ENV=production</code>, <code>npm run build</code>.</li>
+      <li><code>data/*.json</code> maari SQLite allenkil PostgreSQL aakkuka. JSON file concurrent writes-il corrupt aakaam.</li>
+    </ul>
+  </section>
+
+  <section class="step" data-id="s4">
+    <div class="head"><input type="checkbox" aria-label="Step 4 complete">
+      <div><h2>4. Security fixes (production-nu munpe nirbandham)</h2></div></div>
+    <ul>
+      <li><code>POST /auth/demo-switch</code> password illaathe admin login tharum. Remove cheyyuka, allenkil development-il maathram enable cheyyuka.</li>
+      <li><code>/auth/forgot-password</code> reset token response-il thanne return cheyyunnu. Ithu email vazhi maathram ayakkanam.</li>
+      <li>Upload size limit, file type check, per-user storage limit ennivayum venam.</li>
+      <li>Session tokens, password hashing ennivayum production-nu yogyamaano ennu <code>db.ts</code>-il review cheyyuka.</li>
+    </ul>
+  </section>
+
+  <section class="step" data-id="s5">
+    <div class="head"><input type="checkbox" aria-label="Step 5 complete">
+      <div><h2>5. GitHub build, Node apps <span class="tag later">Pinne</span></h2>
+      <p>Repo clone cheythu <code>npm run build</code> run cheyyaan isolated sandbox venam. Ithu risky aanu, athukondu aadyam venda.</p></div></div>
+    <ul>
+      <li>Ororo build-um Docker container-il, CPU/memory/time limit vechu run cheyyanam.</li>
+      <li>Output folder (<code>dist</code>, <code>.next</code>) <code>sites/&lt;slug&gt;/</code>-lekku maattanam. Pinne step 1 pole serve cheyyam.</li>
+      <li>Node/Next.js server apps-nu ororo app-num port, reverse proxy venam.</li>
+    </ul>
+  </section>
+
+  <section class="step">
+    <h2>Chuttum kidakkunna vazhi: already live site proxy cheyyuka</h2>
+    <p>Client site vere ekkidathenkilum host cheythittundenkil, upload illaathe <code>client.storvia.app</code> aa URL-lekku forward cheyyaam:</p>
+<pre><code>// npm i http-proxy-middleware
+import { createProxyMiddleware } from 'http-proxy-middleware';
+
+app.use((req, res, next) =&gt; {
+  const p = db.getProjectByHost(req.hostname);
+  if (!p?.targetUrl) return next();
+  createProxyMiddleware({ target: p.targetUrl, changeOrigin: true })(req, res, next);
+});</code></pre>
+    <p>Project model-il <code>targetUrl</code> field add cheyyanam (<code>types.ts</code>, deploy form).</p>
+  </section>
+
+  <footer>Ithile code snippets ninte project structure-ine adisthaanamaakkiyulla starting points aanu. Production-il edukkunnathinu munpe test cheyyuka.</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='storvia-guide-progress';
+  var steps=[].slice.call(document.querySelectorAll('section.step[data-id]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function update(){
+    var n=0;
+    steps.forEach(function(s){
+      var on=s.querySelector('input').checked;
+      s.classList.toggle('done',on);
+      if(on)n++;
+    });
+    document.getElementById('ptext').textContent=n+' / '+steps.length+' steps complete';
+    document.getElementById('pbar').style.width=(n/steps.length*100)+'%';
+    var out={};
+    steps.forEach(function(s){out[s.dataset.id]=s.querySelector('input').checked});
+    try{localStorage.setItem(KEY,JSON.stringify(out))}catch(e){}
+  }
+  steps.forEach(function(s){
+    var i=s.querySelector('input');
+    i.checked=!!saved[s.dataset.id];
+    i.addEventListener('change',update);
+  });
+  update();
+})();
+</script>
+</body>
+</html>
