@@ -1,0 +1,391 @@
+{
+  "users": [
+    {
+      "id": "usr_alex_001",
+      "name": "Alex Miller",
+      "email": "alex@example.com",
+      "passwordHash": "d94e9a39619b2491ba102822a543da74:a59f7cd3aec260218d491ba47bfc4379ad42af9c8ca61e9443c23fc7b11c2e1220812a8f93bf54e9c7bf32557e3de50798d59cff8c2a1bec0d4f4c9e1da09b6e",
+      "role": "user",
+      "status": "active",
+      "avatarUrl": "/src/assets/images/user_avatar_alex_1791801534928.jpg",
+      "company": "Miller Studios",
+      "createdAt": "2026-09-12T10:54:10.026Z",
+      "updatedAt": "2026-09-12T10:54:10.026Z"
+    },
+    {
+      "id": "usr_admin_001",
+      "name": "Sarah Vance",
+      "email": "admin@storvia.io",
+      "passwordHash": "a22a371aa8c6e3370eecf076c0b80036:41721b02f55a715f4f66443f1e7c119a6307e7297b5a4e88f14dc9ba736c7c2180b9ff15a1c5e0c0b939349c3bc6b858af39ee1a2b848c337ac500a7118d8039",
+      "role": "admin",
+      "status": "active",
+      "avatarUrl": "/src/assets/images/user_avatar_admin_1791801546443.jpg",
+      "company": "Storvia HQ",
+      "createdAt": "2026-09-12T10:54:10.026Z",
+      "updatedAt": "2026-09-12T10:54:10.026Z"
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter Plan",
+      "tagline": "Ideal for individual developers, solo entrepreneurs, and side project collectors.",
+      "websiteLimit": 20,
+      "priceMonthly": 9,
+      "priceAnnual": 90,
+      "features": [
+        "Store up to 20 websites",
+        "Clean domain normalization (removes www, queries & fragments)",
+        "Fast domain search & tag filtering",
+        "One-click direct launch with preserved full URLs",
+        "Export domains to CSV & JSON",
+        "Standard community support"
+      ],
+      "isActive": true,
+      "colorTheme": "blue"
+    },
+    {
+      "id": "pro",
+      "name": "Pro Plan",
+      "tagline": "High-capacity storage and priority workflow for designers, digital creators & agencies.",
+      "websiteLimit": 100,
+      "priceMonthly": 29,
+      "priceAnnual": 290,
+      "features": [
+        "Store up to 100 websites",
+        "All Starter plan features included",
+        "Advanced subdomain tagging & categorization",
+        "Bulk URL domain import tool",
+        "Priority email & chat support",
+        "Audit log & domain history tracking",
+        "Domain health and HTTPS verification"
+      ],
+      "isPopular": true,
+      "isActive": true,
+      "colorTheme": "purple"
+    },
+    {
+      "id": "business",
+      "name": "Business Plan",
+      "tagline": "Enterprise-grade domain asset repository for scaling companies and brand management.",
+      "websiteLimit": 500,
+      "priceMonthly": 79,
+      "priceAnnual": 790,
+      "features": [
+        "Store up to 500 websites",
+        "All Pro plan features included",
+        "Multi-seat workspace collaboration",
+        "Unlimited bulk import & export pipelines",
+        "Dedicated account support manager",
+        "API access & webhook integration",
+        "99.9% uptime SLA guarantee"
+      ],
+      "isActive": true,
+      "colorTheme": "navy"
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_alex_001",
+      "userId": "usr_alex_001",
+      "planId": "starter",
+      "billingCycle": "monthly",
+      "status": "active",
+      "currentPeriodStart": "2026-09-12T10:54:10.026Z",
+      "currentPeriodEnd": "2026-11-11T10:54:10.026Z",
+      "cancelAtPeriodEnd": false,
+      "paymentProvider": "stripe",
+      "subscriptionId": "sub_str_seed_alex"
+    },
+    {
+      "id": "sub_admin_001",
+      "userId": "usr_admin_001",
+      "planId": "business",
+      "billingCycle": "annual",
+      "status": "active",
+      "currentPeriodStart": "2026-09-12T10:54:10.026Z",
+      "currentPeriodEnd": "2027-10-12T10:54:10.145Z",
+      "cancelAtPeriodEnd": false,
+      "paymentProvider": "manual",
+      "subscriptionId": "sub_sys_admin_root"
+    }
+  ],
+  "websites": [
+    {
+      "id": "web_site_001",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://stripe.com/docs/payments",
+      "domain": "stripe.com",
+      "description": "Payment infrastructure and developer billing API reference",
+      "tags": [
+        "Fintech",
+        "Payments",
+        "APIs"
+      ],
+      "category": "Developer Tools",
+      "createdAt": "2026-09-17T10:54:10.145Z",
+      "updatedAt": "2026-09-17T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_002",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://linear.app/features/roadmap",
+      "domain": "linear.app",
+      "description": "Sprint planning, issue tracker and release roadmaps",
+      "tags": [
+        "Productivity",
+        "Project Management"
+      ],
+      "category": "Productivity",
+      "createdAt": "2026-09-20T10:54:10.145Z",
+      "updatedAt": "2026-09-20T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_003",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://github.com/trending",
+      "domain": "github.com",
+      "description": "Open source repositories, code reviews, and Git version control",
+      "tags": [
+        "Development",
+        "Open Source"
+      ],
+      "category": "Developer Tools",
+      "createdAt": "2026-09-22T10:54:10.145Z",
+      "updatedAt": "2026-09-22T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_004",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://vercel.com/dashboard/projects",
+      "domain": "vercel.com",
+      "description": "Edge functions, continuous deployment & Next.js frontend hosting",
+      "tags": [
+        "Cloud",
+        "Hosting"
+      ],
+      "category": "Infrastructure",
+      "createdAt": "2026-09-24T10:54:10.145Z",
+      "updatedAt": "2026-09-24T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_005",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://www.figma.com/files/recent",
+      "domain": "figma.com",
+      "description": "Collaborative UI design system, vectors & component library",
+      "tags": [
+        "Design",
+        "UI/UX"
+      ],
+      "category": "Design",
+      "createdAt": "2026-09-27T10:54:10.145Z",
+      "updatedAt": "2026-09-27T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_006",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://notion.so/workspace/notes",
+      "domain": "notion.so",
+      "description": "Connected team documentation, specs and knowledge base",
+      "tags": [
+        "Documentation",
+        "Productivity"
+      ],
+      "category": "Productivity",
+      "createdAt": "2026-09-30T10:54:10.145Z",
+      "updatedAt": "2026-09-30T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_007",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://supabase.com/dashboard",
+      "domain": "supabase.com",
+      "description": "Hosted Postgres database, Row Level Security & storage",
+      "tags": [
+        "Database",
+        "PostgreSQL"
+      ],
+      "category": "Infrastructure",
+      "createdAt": "2026-10-02T10:54:10.145Z",
+      "updatedAt": "2026-10-02T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_008",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://resend.com/overview",
+      "domain": "resend.com",
+      "description": "Transactional email delivery service for modern web apps",
+      "tags": [
+        "Email",
+        "APIs"
+      ],
+      "category": "Developer Tools",
+      "createdAt": "2026-10-04T10:54:10.145Z",
+      "updatedAt": "2026-10-04T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_009",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://tailwindcss.com/docs/installation",
+      "domain": "tailwindcss.com",
+      "description": "Utility-first modern CSS framework and documentation",
+      "tags": [
+        "CSS",
+        "Frontend"
+      ],
+      "category": "Design",
+      "createdAt": "2026-10-06T10:54:10.145Z",
+      "updatedAt": "2026-10-06T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_010",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://www.raycast.com/store",
+      "domain": "raycast.com",
+      "description": "Mac shortcut launcher with custom script extensions",
+      "tags": [
+        "Utilities",
+        "MacOS"
+      ],
+      "category": "Productivity",
+      "createdAt": "2026-10-08T10:54:10.145Z",
+      "updatedAt": "2026-10-08T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_011",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://planetscale.com/database",
+      "domain": "planetscale.com",
+      "description": "Serverless database with branch migrations and horizontal scale",
+      "tags": [
+        "Database",
+        "Cloud"
+      ],
+      "category": "Infrastructure",
+      "createdAt": "2026-10-10T10:54:10.145Z",
+      "updatedAt": "2026-10-10T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_012",
+      "userId": "usr_alex_001",
+      "originalUrl": "https://snyk.io/security-scans",
+      "domain": "snyk.io",
+      "description": "Dependency security audits, container scans and code analysis",
+      "tags": [
+        "Security",
+        "DevOps"
+      ],
+      "category": "Developer Tools",
+      "createdAt": "2026-10-11T10:54:10.145Z",
+      "updatedAt": "2026-10-11T10:54:10.145Z"
+    },
+    {
+      "id": "web_site_101",
+      "userId": "usr_admin_001",
+      "originalUrl": "https://aws.amazon.com/console/",
+      "domain": "aws.amazon.com",
+      "description": "Main cloud infrastructure control plane",
+      "tags": [
+        "Cloud",
+        "Production"
+      ],
+      "category": "Infrastructure",
+      "createdAt": "2026-09-12T10:54:10.026Z",
+      "updatedAt": "2026-09-12T10:54:10.026Z"
+    },
+    {
+      "id": "web_site_102",
+      "userId": "usr_admin_001",
+      "originalUrl": "https://cloudflare.com/analytics",
+      "domain": "cloudflare.com",
+      "description": "DNS routing, DDoS mitigation, and edge proxy cache",
+      "tags": [
+        "DNS",
+        "Security"
+      ],
+      "category": "Infrastructure",
+      "createdAt": "2026-09-12T10:54:10.026Z",
+      "updatedAt": "2026-09-12T10:54:10.026Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay_001",
+      "userId": "usr_alex_001",
+      "subscriptionId": "sub_alex_001",
+      "planId": "starter",
+      "amount": 9,
+      "currency": "USD",
+      "billingCycle": "monthly",
+      "status": "succeeded",
+      "paymentMethod": "Visa •••• 4242",
+      "provider": "stripe",
+      "transactionId": "txn_str_alex_init",
+      "createdAt": "2026-09-12T10:54:10.026Z"
+    },
+    {
+      "id": "pay_002",
+      "userId": "usr_admin_001",
+      "subscriptionId": "sub_admin_001",
+      "planId": "business",
+      "amount": 790,
+      "currency": "USD",
+      "billingCycle": "annual",
+      "status": "succeeded",
+      "paymentMethod": "Mastercard •••• 8899",
+      "provider": "stripe",
+      "transactionId": "txn_str_admin_annual",
+      "createdAt": "2026-09-12T10:54:10.026Z"
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "act_c890064b",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "DOMAIN_DELETED",
+      "details": "Deleted domain example.com",
+      "createdAt": "2026-10-12T10:55:41.839Z"
+    },
+    {
+      "id": "act_bc966690",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "DOMAIN_ADDED",
+      "details": "Stored domain example.com",
+      "createdAt": "2026-10-12T10:55:16.034Z"
+    },
+    {
+      "id": "act_001",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "USER_LOGIN",
+      "details": "User logged in via credentials",
+      "createdAt": "2026-09-12T10:54:10.026Z"
+    },
+    {
+      "id": "act_002",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "DOMAIN_ADDED",
+      "details": "Added domain stripe.com with 3 tags",
+      "createdAt": "2026-09-17T10:54:10.145Z"
+    },
+    {
+      "id": "act_003",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "DOMAIN_ADDED",
+      "details": "Added domain snyk.io to Developer Tools",
+      "createdAt": "2026-10-11T10:54:10.145Z"
+    }
+  ],
+  "settings": {
+    "allowNewRegistrations": true,
+    "enforceStrictDomainValidation": true,
+    "defaultPlanId": "starter",
+    "maintenanceMode": false,
+    "supportEmail": "support@storvia.io"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Storvia Cloud — Modern Web Hosting & Edge Deployment Platform",
+  "description": "Deploy websites and web apps with instant global edge hosting, automatic SSL, Git continuous deployment, and custom domain routing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

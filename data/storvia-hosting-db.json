@@ -1,0 +1,416 @@
+{
+  "users": [
+    {
+      "id": "usr_alex_001",
+      "name": "Alex Miller",
+      "email": "alex@example.com",
+      "passwordHash": "0b47272d2580cc60d492f55a4bc04e7c:bc77a69893a46d96a5c50804fca695c2e17a8dadc832862db6e37ecbd4f3178e5ce293efba3dc710e345ad08375667f442b80e540bcce394f32f7d579be00e6b",
+      "role": "user",
+      "status": "active",
+      "avatarUrl": "/src/assets/images/user_avatar_alex_1791801534928.jpg",
+      "company": "Stellar Labs",
+      "createdAt": "2026-09-12T11:13:25.761Z",
+      "updatedAt": "2026-09-12T11:13:25.761Z"
+    },
+    {
+      "id": "usr_admin_001",
+      "name": "Sarah Vance",
+      "email": "admin@storvia.io",
+      "passwordHash": "63831f1dbe7e4615afc2386cafd59176:90a39303c294f0c8709c5c8141441ecfcd585aca316dea39c7b5af157a1be2c9d16d011129b8252d3cbccf786e4c934d1e6ff352ef753fcccf2c4c303117c975",
+      "role": "admin",
+      "status": "active",
+      "avatarUrl": "/src/assets/images/user_avatar_admin_1791801546443.jpg",
+      "company": "Storvia Cloud Infrastructure",
+      "createdAt": "2026-09-12T11:13:25.761Z",
+      "updatedAt": "2026-09-12T11:13:25.761Z"
+    }
+  ],
+  "plans": [
+    {
+      "id": "starter",
+      "name": "Starter Hosting",
+      "tagline": "Ideal for personal web projects, portfolios, and static websites.",
+      "maxProjects": 3,
+      "bandwidthLimitGB": 100,
+      "maxRequestsDaily": 50000,
+      "priceMonthly": 0,
+      "priceAnnual": 0,
+      "features": [
+        "Up to 3 active hosted projects",
+        "100 GB Global Edge CDN bandwidth/mo",
+        "Automatic SSL/TLS encryption (*.storvia.app)",
+        "Instant Git repository deployments",
+        "Environment variables management",
+        "Build logs & deployment rollback",
+        "Community developer support"
+      ],
+      "isActive": true
+    },
+    {
+      "id": "pro",
+      "name": "Pro Hosting",
+      "tagline": "High-performance cloud hosting for web applications, SaaS, and client projects.",
+      "maxProjects": 15,
+      "bandwidthLimitGB": 1000,
+      "maxRequestsDaily": 500000,
+      "priceMonthly": 29,
+      "priceAnnual": 290,
+      "features": [
+        "Up to 15 active hosted projects",
+        "1 TB High-Speed Edge bandwidth/mo",
+        "Custom domains with automatic zero-config SSL",
+        "Unlimited preview branches & rollback history",
+        "Advanced DDoS mitigation & Web Application Firewall",
+        "Real-time serverless build logs & metrics",
+        "Priority 24/7 technical support"
+      ],
+      "isPopular": true,
+      "isActive": true
+    },
+    {
+      "id": "business",
+      "name": "Scale & Enterprise",
+      "tagline": "Dedicated cloud infrastructure for high-traffic agencies and enterprise portfolios.",
+      "maxProjects": 50,
+      "bandwidthLimitGB": 5000,
+      "maxRequestsDaily": 2500000,
+      "priceMonthly": 79,
+      "priceAnnual": 790,
+      "features": [
+        "Up to 50 active hosted projects",
+        "5 TB Dedicated multi-region Edge bandwidth/mo",
+        "99.99% Uptime Service Level Agreement",
+        "Custom enterprise domain routing & wildcard SSL",
+        "Multi-seat team member permissions",
+        "Dedicated infrastructure engineering manager",
+        "SOC2 and compliance audit logging"
+      ],
+      "isActive": true
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub_alex_001",
+      "userId": "usr_alex_001",
+      "planId": "starter",
+      "billingCycle": "monthly",
+      "status": "active",
+      "currentPeriodStart": "2026-09-12T11:13:25.761Z",
+      "currentPeriodEnd": "2026-11-11T11:13:25.761Z",
+      "cancelAtPeriodEnd": false,
+      "paymentProvider": "manual",
+      "subscriptionId": "sub_free_alex"
+    },
+    {
+      "id": "sub_admin_001",
+      "userId": "usr_admin_001",
+      "planId": "business",
+      "billingCycle": "annual",
+      "status": "active",
+      "currentPeriodStart": "2026-09-12T11:13:25.761Z",
+      "currentPeriodEnd": "2027-10-12T11:13:25.875Z",
+      "cancelAtPeriodEnd": false,
+      "paymentProvider": "manual",
+      "subscriptionId": "sub_sys_admin"
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj_stellar_shop",
+      "userId": "usr_alex_001",
+      "name": "Stellar Shop",
+      "slug": "stellar-shop",
+      "subdomain": "stellar-shop.storvia.app",
+      "customDomain": "shop.stellarlabs.dev",
+      "customDomainVerified": true,
+      "framework": "nextjs",
+      "gitRepo": "github.com/alexmiller/stellar-shop",
+      "branch": "main",
+      "buildCommand": "npm run build",
+      "outputDir": ".next",
+      "status": "ready",
+      "latestDeployment": {
+        "id": "dep_stellar_prod_01",
+        "projectId": "proj_stellar_shop",
+        "commitHash": "8f4b21c",
+        "commitMessage": "feat: add Stripe checkout integration and product catalogue",
+        "branch": "main",
+        "author": "Alex Miller",
+        "status": "ready",
+        "durationSec": 32,
+        "previewUrl": "https://stellar-shop.storvia.app",
+        "productionUrl": "https://stellar-shop.storvia.app",
+        "buildLogs": [
+          "[storvia-builder] Cloning git repository: github.com/alexmiller/stellar-shop",
+          "[storvia-builder] Detected framework preset: Next.js (App Router)",
+          "[storvia-builder] Node version: v20.11.0, npm version: 10.2.4",
+          "[storvia-builder] Running build command: npm run build",
+          "[next-build] ✓ Compiled / (Static)",
+          "[next-build] ✓ Compiled /products/[id] (SSG)",
+          "[next-build] ✓ Generated 14 static pages",
+          "[storvia-builder] Optimizing 24 static assets for Edge CDN distribution",
+          "[storvia-builder] Provisioning SSL certificate for stellar-shop.storvia.app",
+          "[storvia-builder] Deployment complete! Live at https://stellar-shop.storvia.app"
+        ],
+        "createdAt": "2026-10-10T11:13:25.875Z"
+      },
+      "envVars": [
+        {
+          "id": "env_1",
+          "key": "NEXT_PUBLIC_API_URL",
+          "value": "https://api.stellarlabs.dev",
+          "target": "all"
+        },
+        {
+          "id": "env_2",
+          "key": "DATABASE_URL",
+          "value": "postgresql://postgres:secret@db.internal:5432/main",
+          "target": "production"
+        }
+      ],
+      "analytics": {
+        "bandwidthGB": 34.2,
+        "requests24h": 18420,
+        "avgLatencyMs": 38
+      },
+      "sslStatus": "active",
+      "createdAt": "2026-09-28T11:13:25.875Z",
+      "updatedAt": "2026-10-10T11:13:25.875Z"
+    },
+    {
+      "id": "proj_developer_docs",
+      "userId": "usr_alex_001",
+      "name": "Developer Documentation",
+      "slug": "developer-docs",
+      "subdomain": "developer-docs.storvia.app",
+      "framework": "astro",
+      "gitRepo": "github.com/alexmiller/developer-docs",
+      "branch": "main",
+      "buildCommand": "astro build",
+      "outputDir": "dist",
+      "status": "ready",
+      "latestDeployment": {
+        "id": "dep_docs_prod_01",
+        "projectId": "proj_developer_docs",
+        "commitHash": "3e91a0f",
+        "commitMessage": "docs: update deployment troubleshooting guide and API reference",
+        "branch": "main",
+        "author": "Alex Miller",
+        "status": "ready",
+        "durationSec": 18,
+        "previewUrl": "https://developer-docs.storvia.app",
+        "productionUrl": "https://developer-docs.storvia.app",
+        "buildLogs": [
+          "[storvia-builder] Cloning git repository: github.com/alexmiller/developer-docs",
+          "[storvia-builder] Detected framework preset: Astro Documentation",
+          "[storvia-builder] Running build command: astro build",
+          "[astro-build] Generated 42 HTML pages in 4.12s",
+          "[storvia-builder] Deployed bundle to global edge locations",
+          "[storvia-builder] Live at https://developer-docs.storvia.app"
+        ],
+        "createdAt": "2026-10-07T11:13:25.875Z"
+      },
+      "envVars": [
+        {
+          "id": "env_3",
+          "key": "SITE_TITLE",
+          "value": "Developer Docs Hub",
+          "target": "all"
+        }
+      ],
+      "analytics": {
+        "bandwidthGB": 12.8,
+        "requests24h": 6240,
+        "avgLatencyMs": 24
+      },
+      "sslStatus": "active",
+      "createdAt": "2026-09-22T11:13:25.875Z",
+      "updatedAt": "2026-10-07T11:13:25.875Z"
+    },
+    {
+      "id": "proj_edge_control",
+      "userId": "usr_admin_001",
+      "name": "Edge Control Gateway",
+      "slug": "edge-control",
+      "subdomain": "edge-control.storvia.app",
+      "framework": "react",
+      "gitRepo": "github.com/storvia/edge-control",
+      "branch": "production",
+      "buildCommand": "npm run build",
+      "outputDir": "dist",
+      "status": "ready",
+      "latestDeployment": {
+        "id": "dep_admin_edge_01",
+        "projectId": "proj_edge_control",
+        "commitHash": "f1a92bc",
+        "commitMessage": "sys: scale edge gateway routing tables",
+        "branch": "production",
+        "author": "Sarah Vance",
+        "status": "ready",
+        "durationSec": 22,
+        "previewUrl": "https://edge-control.storvia.app",
+        "productionUrl": "https://edge-control.storvia.app",
+        "buildLogs": [
+          "[storvia-builder] Building React edge control console",
+          "[storvia-builder] Successfully published to 32 Edge POFs"
+        ],
+        "createdAt": "2026-09-12T11:13:25.761Z"
+      },
+      "envVars": [],
+      "analytics": {
+        "bandwidthGB": 182.4,
+        "requests24h": 94000,
+        "avgLatencyMs": 16
+      },
+      "sslStatus": "active",
+      "createdAt": "2026-09-12T11:13:25.761Z",
+      "updatedAt": "2026-09-12T11:13:25.761Z"
+    }
+  ],
+  "deployments": [
+    {
+      "id": "dep_f85d1970",
+      "projectId": "proj_e5a027c6",
+      "commitHash": "3309877d",
+      "commitMessage": "Initial production deployment for Marketing Landing",
+      "branch": "main",
+      "author": "Alex Miller",
+      "status": "ready",
+      "durationSec": 17,
+      "previewUrl": "https://marketing-landing.storvia.app",
+      "productionUrl": "https://marketing-landing.storvia.app",
+      "buildLogs": [
+        "[storvia-edge] Initializing build container for marketing-landing...",
+        "[storvia-edge] Git branch: main (commit: 3309877d)",
+        "[storvia-edge] Framework detected: REACT",
+        "[storvia-edge] Installing package dependencies...",
+        "[storvia-edge] Executing build command: vite build",
+        "[compile] ✓ Code bundled and minified successfully (dist)",
+        "[storvia-edge] Creating Edge CDN deployment package...",
+        "[ssl-engine] Automatic TLS/SSL certificate verified for marketing-landing.storvia.app",
+        "[storvia-edge] Deployed to 32 global edge points of presence.",
+        "[storvia-edge] Deployment live at https://marketing-landing.storvia.app"
+      ],
+      "createdAt": "2026-10-12T11:14:00.480Z"
+    },
+    {
+      "id": "dep_stellar_prod_01",
+      "projectId": "proj_stellar_shop",
+      "commitHash": "8f4b21c",
+      "commitMessage": "feat: add Stripe checkout integration and product catalogue",
+      "branch": "main",
+      "author": "Alex Miller",
+      "status": "ready",
+      "durationSec": 32,
+      "previewUrl": "https://stellar-shop.storvia.app",
+      "productionUrl": "https://stellar-shop.storvia.app",
+      "buildLogs": [
+        "[storvia-builder] Cloning git repository: github.com/alexmiller/stellar-shop",
+        "[storvia-builder] Detected framework preset: Next.js (App Router)",
+        "[storvia-builder] Node version: v20.11.0, npm version: 10.2.4",
+        "[storvia-builder] Running build command: npm run build",
+        "[next-build] ✓ Compiled / (Static)",
+        "[next-build] ✓ Compiled /products/[id] (SSG)",
+        "[next-build] ✓ Generated 14 static pages",
+        "[storvia-builder] Optimizing 24 static assets for Edge CDN distribution",
+        "[storvia-builder] Provisioning SSL certificate for stellar-shop.storvia.app",
+        "[storvia-builder] Deployment complete! Live at https://stellar-shop.storvia.app"
+      ],
+      "createdAt": "2026-10-10T11:13:25.875Z"
+    },
+    {
+      "id": "dep_docs_prod_01",
+      "projectId": "proj_developer_docs",
+      "commitHash": "3e91a0f",
+      "commitMessage": "docs: update deployment troubleshooting guide and API reference",
+      "branch": "main",
+      "author": "Alex Miller",
+      "status": "ready",
+      "durationSec": 18,
+      "previewUrl": "https://developer-docs.storvia.app",
+      "productionUrl": "https://developer-docs.storvia.app",
+      "buildLogs": [
+        "[storvia-builder] Cloning git repository: github.com/alexmiller/developer-docs",
+        "[storvia-builder] Detected framework preset: Astro Documentation",
+        "[storvia-builder] Running build command: astro build",
+        "[astro-build] Generated 42 HTML pages in 4.12s",
+        "[storvia-builder] Deployed bundle to global edge locations",
+        "[storvia-builder] Live at https://developer-docs.storvia.app"
+      ],
+      "createdAt": "2026-10-07T11:13:25.875Z"
+    },
+    {
+      "id": "dep_admin_edge_01",
+      "projectId": "proj_edge_control",
+      "commitHash": "f1a92bc",
+      "commitMessage": "sys: scale edge gateway routing tables",
+      "branch": "production",
+      "author": "Sarah Vance",
+      "status": "ready",
+      "durationSec": 22,
+      "previewUrl": "https://edge-control.storvia.app",
+      "productionUrl": "https://edge-control.storvia.app",
+      "buildLogs": [
+        "[storvia-builder] Building React edge control console",
+        "[storvia-builder] Successfully published to 32 Edge POFs"
+      ],
+      "createdAt": "2026-09-12T11:13:25.761Z"
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay_001",
+      "userId": "usr_alex_001",
+      "subscriptionId": "sub_alex_001",
+      "planId": "starter",
+      "amount": 0,
+      "currency": "USD",
+      "billingCycle": "monthly",
+      "status": "succeeded",
+      "paymentMethod": "Free Tier",
+      "provider": "stripe",
+      "transactionId": "txn_init_free",
+      "createdAt": "2026-09-12T11:13:25.761Z"
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "act_ac944d27",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "PROJECT_DELETED",
+      "details": "Deleted hosted website: marketing-landing.storvia.app",
+      "createdAt": "2026-10-12T11:14:33.266Z"
+    },
+    {
+      "id": "act_fd663a97",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "PROJECT_DEPLOYED",
+      "details": "Deployed new website: marketing-landing.storvia.app",
+      "createdAt": "2026-10-12T11:14:00.481Z"
+    },
+    {
+      "id": "act_001",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "PROJECT_DEPLOYED",
+      "details": "Deployed Next.js website: stellar-shop.storvia.app (commit 8f4b21c)",
+      "createdAt": "2026-10-10T11:13:25.875Z"
+    },
+    {
+      "id": "act_002",
+      "userId": "usr_alex_001",
+      "userName": "Alex Miller",
+      "action": "PROJECT_DEPLOYED",
+      "details": "Deployed Astro documentation: developer-docs.storvia.app",
+      "createdAt": "2026-10-07T11:13:25.875Z"
+    }
+  ],
+  "settings": {
+    "allowNewRegistrations": true,
+    "edgeRegion": "Global (32 Edge POFs)",
+    "maintenanceMode": false,
+    "supportEmail": "hosting@storvia.io"
+  }
+}
